@@ -113,11 +113,18 @@
 
 - (void)setOn:(BOOL)on
 {
+	[self setOn:on animated:NO];
+}
+
+- (void)setOn:(BOOL)on animated:(BOOL)animated
+{
 	_on = on;
+	
+	NSTimeInterval duration = animated ? 0.25 : 0;
 	
 	if( on )
 	{
-		[UIView animateWithDuration:0.25 animations:^{
+		[UIView animateWithDuration:duration animations:^{
 			CGRect frame = _knob.frame;
 			frame.origin.x = 50;
 			_knob.frame = frame;
@@ -126,7 +133,7 @@
 	}
 	else
 	{
-		[UIView animateWithDuration:0.25 animations:^{
+		[UIView animateWithDuration:duration animations:^{
 			CGRect frame = _knob.frame;
 			frame.origin.x = 0;
 			_knob.frame = frame;
