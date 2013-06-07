@@ -54,7 +54,7 @@
 	_knobBlueBorder.userInteractionEnabled = NO;
 	[_knob addSubview:_knobBlueBorder];
 	
-	[self layoutSubviews];
+	[self layoutComponents];
 	
 	return self;
 }
@@ -81,7 +81,7 @@
 	frame.origin.x = buttonX;
 	button.frame = frame;
 	
-	[self layoutSubviews];
+	[self layoutComponents];
 }
 
 - (void)knobDidTouchUp
@@ -98,10 +98,8 @@
 	_dragging = NO;
 }
 
-- (void)layoutSubviews
+- (void)layoutComponents
 {
-	[super layoutSubviews];
-	
 	CGFloat buttonX = _knob.frame.origin.x;
 	
 	_blueBackgroundView.frame = CGRectMake( 0, 0, buttonX + 27, 28 );
@@ -113,7 +111,7 @@
 
 - (void)setOn:(BOOL)on
 {
-	[self setOn:on animated:NO];
+	[self setOn:on animated:YES];
 }
 
 - (void)setOn:(BOOL)on animated:(BOOL)animated
@@ -128,7 +126,7 @@
 			CGRect frame = _knob.frame;
 			frame.origin.x = 50;
 			_knob.frame = frame;
-			[self layoutSubviews];
+			[self layoutComponents];
 		}];
 	}
 	else
@@ -137,7 +135,7 @@
 			CGRect frame = _knob.frame;
 			frame.origin.x = 0;
 			_knob.frame = frame;
-			[self layoutSubviews];
+			[self layoutComponents];
 		}];
 	}
 }
