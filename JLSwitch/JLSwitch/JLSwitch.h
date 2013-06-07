@@ -25,4 +25,6 @@
 
 @property (nonatomic, assign) BOOL on;
 
+- (void)setOn:(BOOL)on animated:(BOOL)animated;
+
 @end
