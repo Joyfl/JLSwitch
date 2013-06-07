@@ -111,7 +111,13 @@
 
 - (void)setOn:(BOOL)on
 {
+	BOOL lastValue = self.on;
 	[self setOn:on animated:YES];
+	
+	if( lastValue != on )
+	{
+		[self sendActionsForControlEvents:UIControlEventValueChanged];
+	}
 }
 
 - (void)setOn:(BOOL)on animated:(BOOL)animated
